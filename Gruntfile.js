@@ -76,6 +76,39 @@ module.exports = function (grunt) {
         cwd: 'test/fixtures',
         src: ['*.js', '*.css'],
         dest: 'test/tmp/withSourceMaps'
+      },
+      withCopyTrue: {
+        options: {
+          algorithm: 'sha1',
+          length: 4,
+          copy: 1
+        },
+        src: ['test/tmp/another.png'],
+        dest: 'test/tmp'
+      },
+      withCopyFalse: {
+        options: {
+          algorithm: 'sha1',
+          length: 4,
+          copy: 0
+        },
+        src: ['test/tmp/movedfile.png'],
+        dest: 'test/tmp/copyfalse'
+      },
+      withCopyNullDest: {
+        options: {
+          algorithm: 'sha1',
+          length: 4
+        },
+        src: ['test/tmp/another.png'],
+        dest: 'test/tmp/nocopy'
+      },
+      withCopyNullNoDest: {
+        options: {
+          algorithm: 'sha1',
+          length: 4
+        },
+        src: ['test/tmp/movednocopyfile.png']
       }
     },
     simplemocha: {
