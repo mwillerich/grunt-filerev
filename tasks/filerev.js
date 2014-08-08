@@ -12,11 +12,11 @@ module.exports = function (grunt) {
     var filerev = grunt.filerev || {summary: {}};
     var options = this.options({
       algorithm: 'md5',
-      length: 8
+      length: 8,
+      copy: null
     });
 
     eachAsync(this.files, function (el, i, next) {
-      var move = true;
 
       // If dest is furnished it should indicate a directory
       if (el.dest) {
@@ -35,8 +35,6 @@ module.exports = function (grunt) {
           grunt.verbose.writeln('Destination dir ' + el.dest + ' does not exists for target ' + target + ': creating');
           grunt.file.mkdir(el.dest);
         }
-        // We need to copy file as we now have a dest different from the src
-        move = false;
       }
 
       el.src.forEach(function (file) {
@@ -62,14 +60,13 @@ module.exports = function (grunt) {
 
         var resultPath;
 
-        if (move) {
-          dirname = path.dirname(file);
-          resultPath = path.resolve(dirname, newName);
-          fs.renameSync(file, resultPath);
-        } else {
-          dirname = el.dest;
-          resultPath = path.resolve(dirname, newName);
+        dirname = el.dest ? el.dest : path.dirname(file);
+        resultPath = path.resolve(dirname, newName);
+
+        if (options.copy || (options.copy === null && el.dest)) {
           grunt.file.copy(file, resultPath);
+        } else {
+          fs.renameSync(file, resultPath);
         }
 
         // Source maps
