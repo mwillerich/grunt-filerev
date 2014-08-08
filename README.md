@@ -61,6 +61,14 @@ Default: `8`
 
 The number of characters of the file hash to prefix the file name with.
 
+#### options.copy
+
+Type: `Boolean`  
+Default: `null`
+
+Flag controlling whether the original file is copied or moved. If not set, 
+other parameters, such as setting a [destination](#destination) control the behaviour.
+
 ### Destination
 
 It will overwrite the `src` files if you don't specify a `dest`:
