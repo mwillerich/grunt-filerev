@@ -77,10 +77,10 @@ module.exports = function (grunt) {
           var resultPathMap = resultPath + '.map';
 
           if (grunt.file.exists(map)) {
-            if (move) {
-              fs.renameSync(map, resultPathMap);
-            } else {
+            if (options.copy || (options.copy === null && el.dest)) {
               grunt.file.copy(map, resultPathMap);
+            } else {
+              fs.renameSync(map, resultPathMap);
             }
 
             // rewrite the sourceMappingURL in files
