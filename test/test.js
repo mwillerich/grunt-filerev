@@ -101,7 +101,7 @@ it('should allow a filename processing function', function () {
 
 it('should copy the file when copy option is true', function () {
   var original = fs.statSync('test/fixtures/another.png').size;
-  var revisioned = fs.statSync('test/tmp/another.37ba.png').size;
+  var revisioned = fs.statSync('test/tmp/another.6d5a.png').size;
   assert(revisioned === original);
   var fileExists = fs.existsSync('test/tmp/another.png');
   assert(fileExists === true);
@@ -109,7 +109,7 @@ it('should copy the file when copy option is true', function () {
 
 it('should move the file when copy option is false', function () {
   var original = fs.statSync('test/fixtures/movedfile.png').size;
-  var revisioned = fs.statSync('test/tmp/copyfalse/movedfile.37ba.png').size;
+  var revisioned = fs.statSync('test/tmp/copyfalse/movedfile.6d5a.png').size;
   assert(revisioned === original);
   var fileExists = fs.existsSync('test/tmp/movedfile.png');
   assert(fileExists === false);
@@ -117,7 +117,7 @@ it('should move the file when copy option is false', function () {
 
 it('should copy the file without copy option when dest is specified', function () {
   var original = fs.statSync('test/fixtures/another.png').size;
-  var revisioned = fs.statSync('test/tmp/nocopy/another.37ba.png').size;
+  var revisioned = fs.statSync('test/tmp/nocopy/another.6d5a.png').size;
   assert(revisioned === original);
   var fileExists = fs.existsSync('test/tmp/another.png');
   assert(fileExists === true);
@@ -125,7 +125,7 @@ it('should copy the file without copy option when dest is specified', function (
 
 it('should move the file without copy option when dest is not specified', function () {
   var original = fs.statSync('test/fixtures/movednocopyfile.png').size;
-  var revisioned = fs.statSync('test/tmp/movednocopyfile.37ba.png').size;
+  var revisioned = fs.statSync('test/tmp/movednocopyfile.6d5a.png').size;
   assert(revisioned === original);
   var fileExists = fs.existsSync('test/tmp/movednocopyfile.png');
   assert(fileExists === false);
