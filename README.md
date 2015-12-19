@@ -32,7 +32,7 @@ grunt.initConfig({
     images: {
       src: 'img/**/*.{jpg,jpeg,gif,png,webp}'
     }
-  },
+  }
 });
 ```
 
@@ -60,6 +60,32 @@ Default: `null`
 
 Flag controlling whether the original file is copied or moved. If not set, 
 other parameters, such as setting a [destination](#destination) control the behaviour.
+
+#### options.process(basename, name, extension)
+
+Type: `function`  
+Default: `null`  
+Returns: `string`
+
+A function to process the revised file name and return back the new file name.
+
+##### basename
+
+Type: `string`
+
+The basename of the file.
+
+##### name
+
+Type: `string`
+
+Name with the revision suffixed.
+
+##### extension
+
+Type: `string`
+
+The file extension.
 
 ### Destination
 
